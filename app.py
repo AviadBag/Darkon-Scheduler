@@ -17,7 +17,7 @@ app = Flask(__name__)
 def hello_world():
     # Retrieve data from db
     session = SessionFactory()
-    all_requests = session.query(Request).filter_by(found=False)
+    all_requests = session.query(Request)
 
     # Render data
     return render_template('app.html', requests=all_requests)
