@@ -13,12 +13,13 @@ from sqlalchemy import create_engine
 from set_appointment import set_appointment
 from dates import get_avialable_dates
 import slots
+import config
 
 engine = None
 
 def init_db():
     global engine
-    engine = create_engine('sqlite:////home/aviad/PycharmProjects/PlacesScheduler/data.sqlite3', echo=False)
+    engine = create_engine(f'sqlite:////{config.DB_PATH}', echo=False)
     Base.metadata.create_all(engine)
 
 @dataclass

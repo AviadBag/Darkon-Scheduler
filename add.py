@@ -1,10 +1,11 @@
 from sqlalchemy.orm import sessionmaker
 
+import config
 from base import Base
 from request import Request
 from sqlalchemy import create_engine
 
-engine = create_engine('sqlite:////home/aviad/PycharmProjects/PlacesScheduler/data.sqlite3', echo=True)
+engine = create_engine(f'sqlite:////{config.DB_PATH}', echo=True)
 Base.metadata.create_all(engine)
 
 SessionFactory = sessionmaker(bind=engine)
