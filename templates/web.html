@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='web.css') }}">
+
+</head>
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Phone</th>
+        <th>Error</th>
+        <th>Is Found?</th>
+    </tr>
+    {% for request in requests %}
+    <tr>
+        <td>{{request.name}}</td>
+        <td>{{request.id}}</td>
+        <td>{{request.phone_number}}</td>
+        <td id="err">{{request.error}}</td>
+        <td>{{request.found}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
