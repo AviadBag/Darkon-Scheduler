@@ -20,4 +20,4 @@ def hello_world():
     all_requests = session.query(Request).filter_by(found=False)
 
     # Render data
-    return render_template('web.html', requests=all_requests)
+    return render_template('app.html', requests=all_requests)
