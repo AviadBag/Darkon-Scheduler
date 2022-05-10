@@ -29,8 +29,7 @@ class Place:
     time: int
 
 def is_date_ok(date: datetime):
-    #return date.month == 5 and date.day <= 24
-    return True
+    return date.month == 5 and date.day <= 24
 
 # Finds a place in the given location. Returns None if nothing was found.
 def find_place(locations: List[int]) -> None | Place:
