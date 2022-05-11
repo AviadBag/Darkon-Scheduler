@@ -6,31 +6,262 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Select</th>
-            <th>Name</th>
-            <th>ID</th>
-            <th>Phone</th>
-            <th>Error</th>
-            <th>Is Found?</th>
-        </tr>
-        {% for request in requests %}
-        <tr>
-            <td>
-                <input type="checkbox" class="delete-cb" name="{{request.id}}">
-            </td>
-            <td>{{request.name}}</td>
-            <td>{{request.id}}</td>
-            <td>{{request.phone_number}}</td>
-            <td id="err">{{request.error}}</td>
-            <td>{{request.found}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+<table>
+    <tr>
+        <th>Select</th>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Phone</th>
+        <th>Error</th>
+        <th>Is Found?</th>
+    </tr>
+    {% for request in requests %}
+    <tr>
+        <td>
+            <input type="checkbox" class="delete-cb" name="{{request.id}}">
+        </td>
+        <td>{{request.name}}</td>
+        <td>{{request.id}}</td>
+        <td>{{request.phone_number}}</td>
+        <td id="err">{{request.error}}</td>
+        <td>{{request.found}}</td>
+    </tr>
+    {% endfor %}
+</table>
 
-    <button onclick="button_delete()">Delete</button>
+<button onclick="button_delete()">Delete</button>
 
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+<section id="add-sec">
+    <form method="get" action="/add">
+        <div>
+            <label for="name">Client Name</label>
+            <input type="text" name="name">
+        </div>
+
+        <div>
+            <label for="id">Client ID</label>
+            <input type="text" name="id">
+        </div>
+
+        <div>
+            <label for="phone">Client Phone</label>
+            <input type="tel" name="phone">
+        </div>
+        <div id="select-locations">
+            <fieldset>
+            <legend>Choose Wanted Locations</legend>
+            <div>
+                <input type="checkbox" name="2155" id="2155">
+                <label for="2155">לשכת ירושלים - ירושלים - שלומציון המלכה 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2243" id="2243">
+                <label for="2243">לשכת מזרח ירושלים شرق القدس - ירושלים - וואדי ג'וז 49</label>
+            </div>
+            <div>
+                <input type="checkbox" name="5550" id="5550">
+                <label for="5550">לשכת צור באהר صور باهر - ירושלים - 257 אלמדינה אל מנורה</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2161" id="2161">
+                <label for="2161">לשכת ירושלים דרום-הר חומה - ירושלים - אליהו קורן 25</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2297" id="2297">
+                <label for="2297">לשכת מעלה אדומים - מעלה אדומים - דרך קדם 5</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2159" id="2159">
+                <label for="2159">לשכת מבשרת ציון - מבשרת ציון - חניון בית ספר הראל</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2882" id="2882">
+                <label for="2882">לשכת קלנדיה قلنديا - ירושלים - מעבר קלנדיה</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2225" id="2225">
+                <label for="2225">לשכת בית שמש - בית שמש - אבא נעמת 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2349" id="2349">
+                <label for="2349">לשכת מודיעין עילית - מודיעין עילית - חזון דוד</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2157" id="2157">
+                <label for="2157">לשכת מודיעין-מכבים-רעות (לתושבי העיר בלבד) - מודיעין - תלתן 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2991" id="2991">
+                <label for="2991">לשכת אריאל - אריאל - יהודה 5</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2148" id="2148">
+                <label for="2148">לשכת רמלה - רמלה - הרצל 91</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2150" id="2150">
+                <label for="2150">לשכת רחובות - רחובות - מוטי קינד 10</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2167" id="2167">
+                <label for="2167">לשכת ראש העין - ראש העין - שלום שבזי 29</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2241" id="2241">
+                <label for="2241">לשכת ראשון לציון - ראשון לציון - ישראל גלילי 3</label>
+            </div>
+            <div>
+                <input type="checkbox" name="3086" id="3086">
+                <label for="3086">לשכת קרית גת - קרית גת - ככר פז 3</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2153" id="2153">
+                <label for="2153">לשכת חולון - חולון - שדרות ירושלים 164</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2113" id="2113">
+                <label for="2113">לשכת פתח תקוה - פתח תקוה - מוטה גור 4</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2163" id="2163">
+                <label for="2163">לשכת בני ברק - בני ברק - דרך זאב ז'בוטינסקי 168</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2095" id="2095">
+                <label for="2095">לשכת רמת גן-גבעתיים - גבעתיים - סירקין 17</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2099" id="2099">
+                <label for="2099">לשכת תל אביב מרכז (קריית הממשלה) - תל אביב - מנחם בגין 125</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2110" id="2110">
+                <label for="2110">לשכת כפר סבא - כפר סבא - ויצמן 140 </label>
+            </div>
+            <div>
+                <input type="checkbox" name="2165" id="2165">
+                <label for="2165">לשכת ת"א דרום (יפו) - תל אביב - סלמה 53</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2215" id="2215">
+                <label for="2215">לשכת אשדוד - אשדוד - דרך מנחם בגין 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2245" id="2245">
+                <label for="2245">לשכת הרצליה - הרצליה - הדר 2</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2749" id="2749">
+                <label for="2749">לשכת טייבה - טייבה - אלבלדיה</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2205" id="2205">
+                <label for="2205">לשכת רהט - רהט - עיריית רהט</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2217" id="2217">
+                <label for="2217">לשכת אשקלון - אשקלון - ברל כצנלסון 9</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2146" id="2146">
+                <label for="2146">לשכת נתניה - נתניה - דוד רמז 13</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2194" id="2194">
+                <label for="2194">לשכת נתיבות - נתיבות - שדרות ירושלים 10</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2196" id="2196">
+                <label for="2196">לשכת באר שבע - באר שבע - התקווה 4</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2144" id="2144">
+                <label for="2144">לשכת חדרה - חדרה - דוד שמעוני 42</label>
+            </div>
+            <div>
+                <input type="checkbox" name="3078" id="3078">
+                <label for="3078">לשכת שדרות - שדרות - מנחם בגין 4</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2198" id="2198">
+                <label for="2198">לשכת דימונה - דימונה - בניין עיריית דימונה</label>
+            </div>
+            <div>
+                <input type="checkbox" name="8977" id="8977">
+                <label for="8977">לשכת אום אל פחם - אום אל פחם - אל מדינה</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2223" id="2223">
+                <label for="2223">לשכת עפולה - עפולה - יהושע חנקין 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2989" id="2989">
+                <label for="2989">לשכת יקנעם - יקנעם - התמר 2</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2229" id="2229">
+                <label for="2229"> לשכת נוף הגליל (נצרת עילית) - נוף הגליל - מעלה יצחק 29</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2744" id="2744">
+                <label for="2744">לשכת קריות (קניון שער הצפון) - קרית אתא - דרך חיפה 52</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2227" id="2227">
+                <label for="2227">לשכת טבריה - טבריה - יהודה הלוי 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2219" id="2219">
+                <label for="2219">לשכת חיפה - חיפה - שדרות פל ים 15 א </label>
+            </div>
+            <div>
+                <input type="checkbox" name="2285" id="2285">
+                <label for="2285">לשכת סח'נין - סחנין - עיריית סח'נין</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2239" id="2239">
+                <label for="2239">לשכת כרמיאל - כרמיאל - החרושת 9</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2211" id="2211">
+                <label for="2211">לשכת עכו - עכו - שלום הגליל 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="5901" id="5901">
+                <label for="5901">לשכת דיר אל אסד - דיר אל אסד - אל ג'בל</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2235" id="2235">
+                <label for="2235">לשכת צפת - צפת - וייצמן 4</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2213" id="2213">
+                <label for="2213">לשכת נהריה - נהריה - אירית 2</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2654" id="2654">
+                <label for="2654">לשכת מעלות תרשיחא - מעלות תרשיחא - בן גוריון 1</label>
+            </div>
+            <div>
+                <input type="checkbox" name="4706" id="4706">
+                <label for="4706">לשכת קצרין - קצרין - מרכז מסחרי איתן</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2237" id="2237">
+                <label for="2237">לשכת קרית שמונה - קרית שמונה - 37 הרצל</label>
+            </div>
+            <div>
+                <input type="checkbox" name="2247" id="2247">
+                <label for="2247">לשכת אילת - אילת - שדרות התמרים 2</label>
+            </div>
+
+        </fieldset>
+        </div>
+
+        <input type="submit">
+    </form>
+</section>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

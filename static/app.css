@@ -6,3 +6,15 @@ table, th, td {
 #err {
   direction: rtl;
 }
+
+#add-sec {
+  margin-top: 30px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+#select-locations {
+  overflow: auto;
+  height: 400px;
+  margin-bottom: 10px;
+}

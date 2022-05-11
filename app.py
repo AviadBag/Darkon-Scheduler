@@ -1,5 +1,5 @@
 from sqlalchemy.orm import sessionmaker
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 import config
 from base import Base
@@ -14,7 +14,7 @@ SessionFactory = sessionmaker(bind=engine)
 app = Flask(__name__)
 
 @app.route("/")
-def main():
+def index():
     # Retrieve data from db
     session = SessionFactory()
     all_requests = session.query(Request)
@@ -28,4 +28,21 @@ def delete(id):
     session.query(Request).filter_by(id=id).delete()
     session.commit()
 
-    return 'ok'
+    return ''
+
+@app.route('/add')
+def add():
+    session = SessionFactory()
+
+    name = request.args['name']
+    id   = request.args['id']
+    phone = request.args['phone']
+    wanted_locations = []
+    for key in request.args.keys():
+        if key.isdigit(): # This is a service id
+           wanted_locations.append(key)
+    r = Request(name=name, id=id, phone_number=phone, wanted_locations=','.join(wanted_locations))
+    session.add(r)
+    session.commit()
+
+    return redirect(url_for('index'))
