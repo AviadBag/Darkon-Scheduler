@@ -2,28 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5" >
     <title>Title</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
 </head>
 <body>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>ID</th>
-        <th>Phone</th>
-        <th>Error</th>
-        <th>Is Found?</th>
-    </tr>
-    {% for request in requests %}
-    <tr>
-        <td>{{request.name}}</td>
-        <td>{{request.id}}</td>
-        <td>{{request.phone_number}}</td>
-        <td id="err">{{request.error}}</td>
-        <td>{{request.found}}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <table>
+        <tr>
+            <th>Select</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Phone</th>
+            <th>Error</th>
+            <th>Is Found?</th>
+        </tr>
+        {% for request in requests %}
+        <tr>
+            <td>
+                <input type="checkbox" class="delete-cb" name="{{request.id}}">
+            </td>
+            <td>{{request.name}}</td>
+            <td>{{request.id}}</td>
+            <td>{{request.phone_number}}</td>
+            <td id="err">{{request.error}}</td>
+            <td>{{request.found}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <button onclick="button_delete()">Delete</button>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

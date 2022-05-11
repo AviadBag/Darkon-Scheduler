@@ -14,10 +14,18 @@ SessionFactory = sessionmaker(bind=engine)
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
+def main():
     # Retrieve data from db
     session = SessionFactory()
     all_requests = session.query(Request)
 
     # Render data
     return render_template('app.html', requests=all_requests)
+
+@app.route('/delete/<id>')
+def delete(id):
+    session = SessionFactory()
+    session.query(Request).filter_by(id=id).delete()
+    session.commit()
+
+    return 'ok'
